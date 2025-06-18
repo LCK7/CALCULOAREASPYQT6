@@ -12,8 +12,9 @@ class MainWindow(QMainWindow):
         label.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         self.setCentralWidget(label)
         
-        toolbar = QToolBar("Barra de Tareas")
-        self.addToolBar(toolbar)
+        menubar = QMenuBar("Barra de Tareas")
+        self.addMenuBar(menubar)
+        
         
 app = QApplication(sys.argv)
 window = MainWindow()
