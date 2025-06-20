@@ -4,11 +4,23 @@ from src.logica.validators import PositiveDoubleValidator
 from src.vista.results import ResultDisplay
 
 class RectanguloWidget(QWidget):
+    """
+    Widget para calcular el área de un rectángulo.
+
+    Permite al usuario ingresar el largo y ancho, calcular el área y mostrar el resultado.
+    Incluye validación para asegurar que los valores ingresados sean positivos.
+    """
     def __init__(self):
+        """
+        Inicializa el widget del rectángulo y configura la interfaz gráfica.
+        """
         super().__init__()
         self._setup_ui()
 
     def _setup_ui(self):
+        """
+        Configura la interfaz del widget: campos de entrada, botones y display de resultado.
+        """
         layout = QFormLayout(self)
         
         self.largo_input = QLineEdit()
@@ -86,6 +98,11 @@ class RectanguloWidget(QWidget):
         """)
 
     def calcular(self):
+        """
+        Calcula el área del rectángulo a partir de los valores ingresados.
+
+        Si los valores son inválidos, muestra un mensaje de error.
+        """
         try:
             largo = float(self.largo_input.text())
             ancho = float(self.ancho_input.text())
@@ -95,6 +112,9 @@ class RectanguloWidget(QWidget):
             self.result_display.show_error("Ingrese un radio válido")
 
     def limpiar(self):
+        """
+        Limpia los campos de entrada y resultado.
+        """
         self.largo_input.clear()
         self.ancho_input.clear()
         self.result_display.clear()

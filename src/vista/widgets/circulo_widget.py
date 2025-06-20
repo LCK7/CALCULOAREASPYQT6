@@ -4,11 +4,26 @@ from src.logica.validators import PositiveDoubleValidator
 from src.vista.results import ResultDisplay
 
 class CirculoWidget(QWidget):
-    def __init__(self,grafico=None):
+    """
+    Widget para calcular el área de un círculo.
+
+    Permite al usuario ingresar el radio, calcular el área y mostrar el resultado.
+    Incluye validación para asegurar que el radio sea un número positivo.
+    """
+    def __init__(self):
+        """
+        Inicializa el widget de círculo.
+
+        Args:
+            grafico (optional): Parámetro opcional si se desea graficar el círculo.
+        """
         super().__init__()
         self._setup_ui()
 
     def _setup_ui(self):
+        """
+        Configura la interfaz del widget: campo de entrada, botones y display de resultado.
+        """
         layout = QFormLayout(self)
         
         self.radio_input = QLineEdit()
@@ -73,6 +88,11 @@ class CirculoWidget(QWidget):
         
 
     def calcular(self):
+        """
+        Realiza el cálculo del área del círculo usando el valor ingresado en el campo de texto.
+
+        Si el valor no es válido, muestra un mensaje de error.
+        """
         try:
             r = float(self.radio_input.text())
             area = math.pi * r**2
@@ -82,5 +102,8 @@ class CirculoWidget(QWidget):
             self.result_display.show_error("Ingrese un radio válido")
 
     def limpiar(self):
+        """
+        Limpia los campos de entrada y resultado.
+        """
         self.radio_input.clear()
         self.result_display.clear()

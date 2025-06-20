@@ -4,11 +4,24 @@ from src.logica.validators import PositiveDoubleValidator
 from src.vista.results import ResultDisplay
 
 class CuadradoWidget(QWidget):
+    """
+    Widget para calcular el área de un cuadrado.
+
+    Permite al usuario ingresar la longitud del lado, calcular el área
+    y mostrar el resultado. Incluye validación para asegurar que el lado
+    sea un número positivo.
+    """
     def __init__(self):
+        """
+        Inicializa el widget del cuadrado y configura la interfaz gráfica.
+        """
         super().__init__()
         self._setup_ui()
 
     def _setup_ui(self):
+        """
+        Configura la interfaz del widget: campo de entrada, botones y display de resultado.
+        """
         layout = QFormLayout(self)
         
         self.lado_input = QLineEdit()
@@ -72,6 +85,11 @@ class CuadradoWidget(QWidget):
         """)
 
     def calcular(self):
+        """
+        Calcula el área del cuadrado a partir del valor ingresado.
+
+        Si el valor es inválido, muestra un mensaje de error.
+        """
         try:
             lado = float(self.lado_input.text())
             area = lado * lado
@@ -80,5 +98,8 @@ class CuadradoWidget(QWidget):
             self.result_display.show_error("Ingrese un radio válido")
 
     def limpiar(self):
+        """
+        Limpia los campos de entrada y resultado.
+        """
         self.lado_input.clear()
         self.result_display.clear()

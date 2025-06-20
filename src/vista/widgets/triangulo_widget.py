@@ -4,11 +4,25 @@ from src.logica.validators import PositiveDoubleValidator
 from src.vista.results import ResultDisplay
 
 class TrianguloWidget(QWidget):
+    """
+    Widget para calcular el área de un triángulo.
+
+    Permite al usuario ingresar la base y la altura, calcular el área
+    y mostrar el resultado. Incluye validación para asegurar que los valores
+    ingresados sean positivos.
+    """
+
     def __init__(self):
+        """
+        Inicializa el widget del triángulo y configura la interfaz gráfica.
+        """
         super().__init__()
         self._setup_ui()
 
     def _setup_ui(self):
+        """
+        Configura la interfaz del widget: campos de entrada, botones y display de resultado.
+        """
         layout = QFormLayout(self)
         
         self.base_input = QLineEdit()
@@ -86,6 +100,11 @@ class TrianguloWidget(QWidget):
         """)
 
     def calcular(self):
+        """
+        Calcula el área del triángulo a partir de los valores ingresados.
+
+        Si los valores son inválidos, muestra un mensaje de error.
+        """
         try:
             base = float(self.base_input.text())
             altura = float(self.altura_input.text())
@@ -95,6 +114,9 @@ class TrianguloWidget(QWidget):
             self.result_display.show_error("Ingrese un radio válido")
 
     def limpiar(self):
+        """
+        Limpia los campos de entrada y resultado.
+        """
         self.base_input.clear()
         self.altura_input.clear()
         self.result_display.clear()
